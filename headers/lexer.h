@@ -1,3 +1,6 @@
+#ifndef TOKENS_H
+#define TOKENS_H
+
 typedef enum KEYWORD
 {
     INTEGER_TOKEN,
@@ -5,9 +8,9 @@ typedef enum KEYWORD
     FLOAT_TOKEN,
     IF_TOKEN,
     THEN_TOKEN,
-    GOTO,TOKEN,
-    MAIN
-}KEYWORD;
+    GOTO_TOKEN,
+    MAIN_TOKEN
+} KEYWORD;
 
 typedef enum OPERATION
 {
@@ -21,17 +24,17 @@ typedef enum OPERATION
     GREATEREQUAL_TOKEN,
     LESS_TOKEN,
     LESSEQUAL_TOKEN
-}OPERATION;
+} OPERATION;
 
-typedef enum PUNCTUALTION
+typedef enum PUNCTUATION
 {
     SEMICOL_TOKEN,
     RPAREN_TOKEN,
     LPAR_TOKEN,
     COMA_TOKEN,
     SEMICOLON_TOKEN,
-    COLON_TOKEN,
-}PUNCTUATION;
+    COLON_TOKEN
+} PUNCTUATION;
 
 typedef enum category
 {
@@ -40,41 +43,36 @@ typedef enum category
     operation,
     constant,
     identifier
-}category;
+} category;
 
 typedef union tokenVal
 {
     KEYWORD keyword;
     PUNCTUATION punctuation;
     OPERATION operation;
-    char* identifier;
+    char *identifier;
     int constant;
-}tokenVal;
+} tokenVal;
 
 typedef struct token
 {
     category tokenType;
     tokenVal val;
-    char* lexeme;
-}token;
+    char *lexeme;
+} token;
 
 typedef enum kind_of_id
 {
     FUNC_NAME,
     VAR_NAME
-}kind_of_id;
+} kind_of_id;
 
 typedef struct symbolTable
 {
     kind_of_id type;
-    char* nameID;
-}symbolTable;
+    char *nameID;
+} symbolTable;
 
+token lexer(char *input, int len, symbolTable *table);
 
-
-token lexer(char* input, int len, symbolTable* table)
-{
-    token streamTokens;
-
-    return streamTokens;
-}
+#endif

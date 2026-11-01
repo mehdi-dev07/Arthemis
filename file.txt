@@ -1,0 +1,6 @@
+
+int main() {
+    int age;
+    age = 20;
+    output(age);
+}
